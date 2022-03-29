@@ -1,18 +1,49 @@
+import { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Bars } from "react-loader-spinner";
+import axios from "axios";
 
 import Trackit from "./assets/Trackit.svg";
 
 export default function SignInScreen(){
+    const [disabled, setDisabled] = useState(false);
+    const [signInInfo, setSignInInfo] = useState({});
+    const navigate = useNavigate();
+
+    const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up";
+
+    function updateSignInState(event) {
+        const {value, name} = event.target;
+        setSignInInfo(prevState => ({...prevState, [name]: value}));
+    }
+
+    function sendSignInInfo(event){
+        event.preventDefault();
+        setDisabled(true);
+        const promise = axios.post(URL, signInInfo);
+
+        promise.then(({data}) => {
+            console.log(data);
+            navigate("/");         
+        })
+
+        promise.catch(error => {
+            console.log(error.response.data);
+            alert("Erro de cadastro!");
+            setDisabled(false);
+        })
+    }
+
     return (
         <SignIn>
             <img src={Trackit} alt="Trackit" />
-            <FormSignIn>
-                <input type="email" placeholder="email" required />
-                <input type="password" placeholder="senha" required />
-                <input type="text" placeholder="nome" required />
-                <input type="url" placeholder="foto" required />
-                <button type="submit">Cadastrar</button>
+            <FormSignIn onSubmit={sendSignInInfo}>
+                <input type="email" name="email" onChange={updateSignInState} disabled={disabled} placeholder="email" required />
+                <input type="password" name="password" onChange={updateSignInState} disabled={disabled} placeholder="senha" required />
+                <input type="text" name="name" onChange={updateSignInState} disabled={disabled} placeholder="nome" required />
+                <input type="url" name="image" onChange={updateSignInState} disabled={disabled} placeholder="foto" required />
+                <button type="submit" disabled={disabled}>{disabled ? <Bars color="#fff" height={40} width={40} /> : "Cadastrar"}</button>
             </FormSignIn>
             <Link to="/"><p>Já tem uma conta? Faça login!</p></Link>
         </SignIn>
@@ -56,9 +87,15 @@ const FormSignIn = styled.form`
         font-family: 'Lexend Deca', sans-serif;
         font-size: 20px;
         line-height: 25px;
-        opacity: 0.5;
         padding-left: 11px;
         margin-bottom: 6px;
+        color: #afafaf;
+        &::placeholder {
+            color: #dbdbdb;
+        }
+        &:disabled {
+            background-color: #f2f2f2;
+        }
     }
 
     button {
@@ -72,6 +109,12 @@ const FormSignIn = styled.form`
         border: none;
         border-radius: 4.7px;
         margin-bottom: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:disabled {
+            opacity: 0.7;
+        }
     }
 
     ::placeholder {

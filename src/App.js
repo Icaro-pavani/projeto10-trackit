@@ -5,8 +5,6 @@ import LoginScreen from "./LoginScreen";
 import SignInScreen from "./SignInScreen";
 import Habits from "./Habits";
 
-import "./reset.css";
-
 export default function App() {
     return (
         <>
