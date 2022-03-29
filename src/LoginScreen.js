@@ -1,16 +1,25 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Bars } from "react-loader-spinner";
 
 import Trackit from "./assets/Trackit.svg";
 
 export default function LoginScreen(){
+    const [submit, setSubmit] = useState(false);
+    const [disabled, setDisabled] = useState(false);
+
     return (
         <Login>
             <img src={Trackit} alt="Trackit" />
-            <FormLogin>
-                <input type="email" placeholder="email" required />
-                <input type="password" placeholder="senha" required />
-                <button type="submit">Entrar</button>
+            <FormLogin onSubmit={e => {
+                e.preventDefault();
+                setSubmit(true);
+                setDisabled(true);
+            }}>
+                <input type="email" disabled={disabled} placeholder="email" required />
+                <input type="password" disabled={disabled} placeholder="senha" required />
+                <button type="submit" disabled={disabled}>{submit ? <Bars color="#fff" height={40} width={40} /> : "Entrar"}</button>
             </FormLogin>
             <Link to="/cadastro"><p>Não tem uma conta? Cadastre-se!</p></Link>
         </Login>
@@ -49,14 +58,20 @@ const FormLogin = styled.form`
     input {
         width: 303px;
         height: 45px;
-        border: 1px solid #d5d5d5;
         border-radius: 5px;
         font-family: 'Lexend Deca', sans-serif;
         font-size: 20px;
         line-height: 25px;
-        opacity: 0.5;
+        border: 1px solid #d5d5d5;
         padding-left: 11px;
         margin-bottom: 6px;
+        color: #afafaf;
+        &::placeholder {
+            color: #dbdbdb;
+        }
+        &:disabled {
+            background-color: #f2f2f2;
+        }
     }
 
     button {
@@ -70,9 +85,11 @@ const FormLogin = styled.form`
         border: none;
         border-radius: 4.7px;
         margin-bottom: 25px;
-    }
-
-    ::placeholder {
-        color: #d5d5d5;
-    }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:disabled {
+            opacity: 0.7;
+        }
+    }   
 `;
