@@ -3,9 +3,9 @@ import GlobalStyle from "./theme/GlobalStyle";
 
 import LoginScreen from "./LoginScreen";
 import SignInScreen from "./SignInScreen";
+import Habits from "./Habits";
 
 import "./reset.css";
-// import "./style.css";
 
 export default function App() {
     return (
@@ -14,7 +14,8 @@ export default function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<LoginScreen />}/>
-                    <Route path="/cadastro" element={<SignInScreen />} />          
+                    <Route path="/cadastro" element={<SignInScreen />} />
+                    <Route path="/habitos" element={<Habits />} />
                 </Routes>
             </BrowserRouter>
         </>
