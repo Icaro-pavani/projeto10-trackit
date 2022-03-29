@@ -1,25 +1,47 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Bars } from "react-loader-spinner";
+import axios from "axios";
 
 import Trackit from "./assets/Trackit.svg";
 
 export default function LoginScreen(){
-    const [submit, setSubmit] = useState(false);
     const [disabled, setDisabled] = useState(false);
+    const [loginInfo, setLoginInfo] = useState({});
+
+    const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
+    const navigate = useNavigate();
+
+    function updateLoginInfo(event) {
+        const {name, value} = event.target;
+        setLoginInfo(prevState => ({...prevState, [name]: value}));
+    }
+
+    function submitLoginInfo(event) {
+        event.preventDefault();
+        const promise = axios.post(URL, loginInfo);
+        setDisabled(true);
+
+        promise.then(({data}) => {
+            console.log(data);
+            navigate("/hoje");
+        });
+
+        promise.catch(error => {
+            console.log(error.response.data);
+            alert(error.response.data.message);
+            setDisabled(false);
+        })
+    }
 
     return (
         <Login>
             <img src={Trackit} alt="Trackit" />
-            <FormLogin onSubmit={e => {
-                e.preventDefault();
-                setSubmit(true);
-                setDisabled(true);
-            }}>
-                <input type="email" disabled={disabled} placeholder="email" required />
-                <input type="password" disabled={disabled} placeholder="senha" required />
-                <button type="submit" disabled={disabled}>{submit ? <Bars color="#fff" height={40} width={40} /> : "Entrar"}</button>
+            <FormLogin onSubmit={submitLoginInfo}>
+                <input type="email" name="email" onChange={updateLoginInfo} disabled={disabled} placeholder="email" required />
+                <input type="password" name="password" onChange={updateLoginInfo} disabled={disabled} placeholder="senha" required />
+                <button type="submit" disabled={disabled}>{disabled ? <Bars color="#fff" height={40} width={40} /> : "Entrar"}</button>
             </FormLogin>
             <Link to="/cadastro"><p>Não tem uma conta? Cadastre-se!</p></Link>
         </Login>

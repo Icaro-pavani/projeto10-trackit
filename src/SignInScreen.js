@@ -30,7 +30,7 @@ export default function SignInScreen(){
 
         promise.catch(error => {
             console.log(error.response.data);
-            alert("Erro de cadastro!");
+            alert(error.response.data.message);
             setDisabled(false);
         })
     }
