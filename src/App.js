@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./theme/GlobalStyle";
 
@@ -6,18 +7,24 @@ import SignInScreen from "./SignInScreen";
 import Today from "./Today";
 import Habits from "./Habits";
 
+import UserInfoContext from "./contexts/UserInfoContext";
+
 export default function App() {
+    const [userInfo, setUserInfo] = useState({name: "Icaro"});
+
     return (
         <>
             <GlobalStyle />
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<LoginScreen />}/>
-                    <Route path="/cadastro" element={<SignInScreen />} />
-                    <Route path="/hoje" element={<Today />} />
-                    <Route path="/habitos" element={<Habits />} />
-                </Routes>
-            </BrowserRouter>
+            <UserInfoContext.Provider value={{userInfo, setUserInfo}}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<LoginScreen />} />
+                        <Route path="/cadastro" element={<SignInScreen />} />
+                        <Route path="/hoje" element={<Today />} />
+                        <Route path="/habitos" element={<Habits />} />
+                    </Routes>
+                </BrowserRouter>
+            </UserInfoContext.Provider>
         </>
     )
 }
