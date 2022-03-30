@@ -16,8 +16,8 @@ export default function App() {
     return (
         <>
             <GlobalStyle />
-            <BrowserRouter>
-                <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
+            <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
+                <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<LoginScreen />} />
                         <Route path="/cadastro" element={<SignInScreen />} />
@@ -25,8 +25,8 @@ export default function App() {
                         <Route path="/habitos" element={<Habits />} />
                         <Route path="/historico" element={<Historic />} />
                     </Routes>
-                </UserInfoContext.Provider>
-            </BrowserRouter>
+                </BrowserRouter>
+            </UserInfoContext.Provider>
         </>
     )
 }

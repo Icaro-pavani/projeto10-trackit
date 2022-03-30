@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import dayjs from "dayjs";
+import { useContext } from "react";
 
 import Header from "./Header";
 import Menu from "./Menu";
 import Habit from "./Habit";
+import UserInfoContext from "./contexts/UserInfoContext";
 
 export default function Today() {
+    const {userInfo} = useContext(UserInfoContext);
+
+    console.log(userInfo);
     const today = [
         {
             "id": 3,

@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 
 import Trackit from "./assets/Trackit.svg";
+import UserInfoContext from "./contexts/UserInfoContext";
 
 export default function LoginScreen(){
     const [disabled, setDisabled] = useState(false);
     const [loginInfo, setLoginInfo] = useState({});
+
+    const { setUserInfo } = useContext(UserInfoContext);
 
     const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
     const navigate = useNavigate();
@@ -25,6 +28,7 @@ export default function LoginScreen(){
 
         promise.then(({data}) => {
             console.log(data);
+            setUserInfo(data);
             navigate("/hoje");
         });
 
