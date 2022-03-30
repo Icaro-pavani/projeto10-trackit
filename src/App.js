@@ -11,13 +11,13 @@ import Historic from "./Historic";
 import UserInfoContext from "./contexts/UserInfoContext";
 
 export default function App() {
-    const [userInfo, setUserInfo] = useState({name: "Icaro"});
+    const [userInfo, setUserInfo] = useState({ name: "Icaro" });
 
     return (
         <>
             <GlobalStyle />
-            <UserInfoContext.Provider value={{userInfo, setUserInfo}}>
-                <BrowserRouter>
+            <BrowserRouter>
+                <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
                     <Routes>
                         <Route path="/" element={<LoginScreen />} />
                         <Route path="/cadastro" element={<SignInScreen />} />
@@ -25,8 +25,8 @@ export default function App() {
                         <Route path="/habitos" element={<Habits />} />
                         <Route path="/historico" element={<Historic />} />
                     </Routes>
-                </BrowserRouter>
-            </UserInfoContext.Provider>
+                </UserInfoContext.Provider>
+            </BrowserRouter>
         </>
     )
 }

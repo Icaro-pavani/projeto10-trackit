@@ -14,9 +14,10 @@ export default function Habits() {
 
     const { userInfo, setUserInfo } = useContext(UserInfoContext);
 
-    console.log(newHabit.days);
-    console.log(userInfo);
-    console.log(habits);
+    
+    // console.log(newHabit.days);
+    // console.log(userInfo);
+    // console.log(habits);
     useEffect(() => {
         setHabits([]);
     }, [])

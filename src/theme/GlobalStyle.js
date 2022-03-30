@@ -129,6 +129,8 @@ const GlobalStyle = createGlobalStyle`
       border-spacing: 0;
     }
 
+    @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Playball&display=swap');
+
     * {
         box-sizing: border-box;
     }
