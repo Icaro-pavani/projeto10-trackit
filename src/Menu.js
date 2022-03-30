@@ -24,7 +24,7 @@ export default function Menu() {
                     />
                 </StyledLink>
             </Progress>
-            <h3>Histórico</h3>
+            <StyledLink to="/historico"><h3>Histórico</h3></StyledLink>
         </MenuSection>
     );
 }

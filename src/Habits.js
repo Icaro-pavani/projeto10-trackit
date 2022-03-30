@@ -18,11 +18,7 @@ export default function Habits() {
     console.log(userInfo);
     console.log(habits);
     useEffect(() => {
-        setHabits([{
-            id: 1,
-            name: "Nome do hábito",
-            days: [1, 4, 5]
-        }]);
+        setHabits([]);
     }, [])
 
     return (
@@ -49,14 +45,6 @@ const HabitsSection = styled.main`
     height: calc(100vh - 70px);
     background-color: #f2f2f2;
     margin-top: 70px;
-
-    p {
-        font-size: 18px;
-        line-height: 22px;
-        color: #666;
-        padding: 0 18px;
-        margin-top: 30px;
-    }
 `;
 
 const MyHabitsHeader = styled.div`
@@ -64,7 +52,7 @@ const MyHabitsHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 32px 18px 0px;
+    padding: 28px 18px 0px;
 
     h2 {
         font-size: 23px;
@@ -95,4 +83,12 @@ const HabitList = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
+
+    p {
+        font-size: 18px;
+        line-height: 22px;
+        color: #666;
+        padding: 0 18px;
+        margin-top: 10px;
+    }
 `;

@@ -27,7 +27,7 @@ const TodaysHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 32px 18px 0px;
+    padding: 28px 18px 0px;
 
     h2 {
         font-size: 23px;

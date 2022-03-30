@@ -6,6 +6,7 @@ import LoginScreen from "./LoginScreen";
 import SignInScreen from "./SignInScreen";
 import Today from "./Today";
 import Habits from "./Habits";
+import Historic from "./Historic";
 
 import UserInfoContext from "./contexts/UserInfoContext";
 
@@ -22,6 +23,7 @@ export default function App() {
                         <Route path="/cadastro" element={<SignInScreen />} />
                         <Route path="/hoje" element={<Today />} />
                         <Route path="/habitos" element={<Habits />} />
+                        <Route path="/historico" element={<Historic />} />
                     </Routes>
                 </BrowserRouter>
             </UserInfoContext.Provider>
