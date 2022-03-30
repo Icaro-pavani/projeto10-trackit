@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import Header from "./Header";
-import Footer from "./Footer";
+import Menu from "./Menu";
 
 export default function Today() {
     return(
@@ -10,7 +10,7 @@ export default function Today() {
             <TodaysHeader>
                 <h2>Meus hábitos</h2>
             </TodaysHeader>
-            <Footer />
+            <Menu />
         </TodaySection>
     );
 }

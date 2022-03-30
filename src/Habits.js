@@ -1,19 +1,31 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 import Header from "./Header";
-import Footer from "./Footer";
+import Menu from "./Menu";
+import AddHabitForm from "./AddHabitForm";
 
 export default function Habits() {
+    const [habits, setHabits] = useState({});
+    const [addHabit, setAddHabit] = useState(false);
+    const [newHabit, setNewHabit] = useState({days: []});
+
+    console.log(newHabit.days);
+
     return(
         <HabitsSection>
             <Header />
             <MyHabitsHeader>
                 <h2>Meus hábitos</h2>
-                <AddButton>
+                <AddButton onClick={() => setAddHabit(true)}>
                     <ion-icon name="add-sharp"></ion-icon>
                 </AddButton>
             </MyHabitsHeader>
-            <Footer />
+            {addHabit ? <AddHabitForm setAddHabit={setAddHabit} newHabit={newHabit} setNewHabit={setNewHabit} /> : <></>}
+
+            {Object.keys(habits).length > 0 ? <></> : 
+            <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>}
+            <Menu />
         </HabitsSection>
     );
 }
@@ -23,6 +35,14 @@ const HabitsSection = styled.main`
     height: calc(100vh - 70px);
     background-color: #f2f2f2;
     margin-top: 70px;
+
+    p {
+        font-size: 18px;
+        line-height: 22px;
+        color: #666;
+        padding: 0 18px;
+        margin-top: 30px;
+    }
 `;
 
 const MyHabitsHeader = styled.div`
@@ -47,6 +67,7 @@ const AddButton = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 4.7px;
+    cursor: pointer;
 
     ion-icon {
         color: #fff;
