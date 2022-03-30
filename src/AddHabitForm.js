@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Bars } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function AddHabitForm({setAddHabit, newHabit, setNewHabit}) {
     const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
@@ -30,7 +30,7 @@ export default function AddHabitForm({setAddHabit, newHabit, setNewHabit}) {
             </DaysButtons>
             <ConfirmationButtons>
                 <CancelButton disabled={disabled} onClick={() => setAddHabit(false)}>Cancelar</CancelButton>
-                <SaveButton disabled={disabled} onClick={() => setDisabled(true)}>{disabled ? <Bars color="#fff" height={30} width={30} /> : "Salvar"}</SaveButton>
+                <SaveButton disabled={disabled} onClick={() => setDisabled(true)}>{disabled ? <ThreeDots color="#fff" height={30} width={30} /> : "Salvar"}</SaveButton>
             </ConfirmationButtons>
         </HabitForm>
     );

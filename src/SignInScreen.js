@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import { Bars } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 
 import Trackit from "./assets/Trackit.svg";
@@ -43,7 +43,7 @@ export default function SignInScreen(){
                 <input type="password" name="password" onChange={updateSignInState} disabled={disabled} placeholder="senha" required />
                 <input type="text" name="name" onChange={updateSignInState} disabled={disabled} placeholder="nome" required />
                 <input type="url" name="image" onChange={updateSignInState} disabled={disabled} placeholder="foto" required />
-                <button type="submit" disabled={disabled}>{disabled ? <Bars color="#fff" height={40} width={40} /> : "Cadastrar"}</button>
+                <button type="submit" disabled={disabled}>{disabled ? <ThreeDots color="#fff" height={40} width={40} /> : "Cadastrar"}</button>
             </FormSignIn>
             <Link to="/"><p>Já tem uma conta? Faça login!</p></Link>
         </SignIn>
