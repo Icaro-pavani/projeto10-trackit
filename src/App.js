@@ -12,11 +12,12 @@ import UserInfoContext from "./contexts/UserInfoContext";
 
 export default function App() {
     const [userInfo, setUserInfo] = useState({ name: "Icaro" });
+    const [porcentageDone, setPorcentageDone] = useState(0);
 
     return (
         <>
             <GlobalStyle />
-            <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
+            <UserInfoContext.Provider value={{ userInfo, setUserInfo, porcentageDone, setPorcentageDone }}>
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<LoginScreen />} />

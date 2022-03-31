@@ -1,6 +1,35 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import axios from "axios";
+
+import UserInfoContext from "./contexts/UserInfoContext";
 
 export default function Habit({ habit }) {
+    const { userInfo, setUserInfo } = useContext(UserInfoContext);
+    console.log(userInfo);
+
+    const SELECTION_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
+
+    function toggleHabit(id , done) {
+        let promise;
+        if (!done) {
+            promise = axios.post(`${SELECTION_URL}/${id}/check`, null, {
+                headers: {
+                    Authorization: `Bearer ${userInfo.token}`
+                }
+            });
+        } else {
+            promise = axios.post(`${SELECTION_URL}/${id}/uncheck`, null,{
+                headers: {
+                    Authorization: `Bearer ${userInfo.token}`
+                }
+            });
+        }
+        promise.then(() => {
+            setUserInfo({...userInfo});
+        })
+    }
+
     return (
         <HabitSection>
             <Description>
@@ -9,7 +38,7 @@ export default function Habit({ habit }) {
                 <p>Seu recorde: <Matched difference={habit.currentSequence - habit.highestSequence}>{habit.highestSequence} dias</Matched></p>
             </Description>
             <SelectionBox checked={habit.done}>
-                <ion-icon name="checkbox"></ion-icon>
+                <ion-icon name="checkbox" onClick={() => toggleHabit(habit.id, habit.done)}></ion-icon>
             </SelectionBox>
         </HabitSection>
     );
