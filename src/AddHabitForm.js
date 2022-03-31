@@ -34,8 +34,7 @@ export default function AddHabitForm({setAddHabit, newHabit, setNewHabit}) {
                 Authorization: `Bearer ${userInfo.token}`
             }
         });
-        promise.then(({data}) => {
-            console.log(data);
+        promise.then(() => {
             setNewHabit({ days: [] });
             setUserInfo({...userInfo});
             setDisabled(false);

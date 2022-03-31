@@ -6,7 +6,6 @@ import UserInfoContext from "./contexts/UserInfoContext";
 
 export default function Habit({ habit }) {
     const { userInfo, setUserInfo } = useContext(UserInfoContext);
-    console.log(userInfo);
 
     const SELECTION_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 

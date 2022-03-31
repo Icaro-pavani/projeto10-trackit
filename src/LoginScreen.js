@@ -27,7 +27,6 @@ export default function LoginScreen(){
         setDisabled(true);
 
         promise.then(({data}) => {
-            console.log(data);
             setUserInfo(data);
             navigate("/hoje");
         });

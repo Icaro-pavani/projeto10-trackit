@@ -1,12 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import UserInfoContext from "./contexts/UserInfoContext";
+import calculatePorcentageDone from "./calculatePorcentageDone";
 
 export default function Menu() {
-    const {porcentageDone} = useContext(UserInfoContext);
+    const {porcentageDone, userInfo, setPorcentageDone} = useContext(UserInfoContext);
+
+    const URL_TODAY = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today";
+
+    useEffect(() => {
+        const promise = axios.get(URL_TODAY, {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        });
+        promise.then(({data}) => {
+            const porcentageHabitsDone = calculatePorcentageDone(data);
+            setPorcentageDone(porcentageHabitsDone);
+        });
+        promise.catch(error => console.log(error));
+    },[userInfo, setPorcentageDone]);
     
     return (
         <MenuSection>

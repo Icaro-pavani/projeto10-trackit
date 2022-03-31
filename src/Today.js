@@ -7,6 +7,7 @@ import Header from "./Header";
 import Menu from "./Menu";
 import Habit from "./Habit";
 import UserInfoContext from "./contexts/UserInfoContext";
+import calculatePorcentageDone from "./calculatePorcentageDone";
 
 export default function Today() {
     const {userInfo, porcentageDone, setPorcentageDone} = useContext(UserInfoContext);
@@ -23,18 +24,12 @@ export default function Today() {
         promise.then(({data}) => {
             setTodaysHabits(data);
             const porcentageHabitsDone = calculatePorcentageDone(data);
-            console.log(porcentageHabitsDone);
             setPorcentageDone(porcentageHabitsDone);
         });
         promise.catch(error => console.log(error));
-    },[userInfo]);
+    },[userInfo, setPorcentageDone]);
 
     const isDone = todaysHabits.map(habit => habit.done);
-
-    function calculatePorcentageDone(array){
-        const done = array.filter(habit => habit.done === true);
-        return (done.length/array.length * 100).toFixed(2);
-    }
 
     function weekday(day) {
         switch(day){
