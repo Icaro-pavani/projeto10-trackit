@@ -1,9 +1,28 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 import trash from "./assets/trash.svg";
+import UserInfoContext from "./contexts/UserInfoContext";
 
 export default function YourHabits({ habit }){
     const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
+
+    const { userInfo, setUserInfo } = useContext(UserInfoContext);
+
+    const HABIT_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
+    
+    function deleteHabit(id) {
+        if (window.confirm("Você realmente deseja deletar este hábito?")){
+            const promise = axios.delete(`${HABIT_URL}/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${userInfo.token}`
+                }
+            });
+            promise.then(() => setUserInfo({...userInfo}));
+            promise.catch(error => console.log(error.response.data));
+        }
+    }
 
     return (
         <HabitDiv>
@@ -11,7 +30,7 @@ export default function YourHabits({ habit }){
             <DaysButtons>
                 {weekdays.map((day, index) => <DayButton key={index} disabled={true} selected={habit.days.includes(index)}>{day}</DayButton>)}
             </DaysButtons>
-            <img src={trash} alt="trash can" />
+            <img src={trash} alt="trash can" onClick={() => deleteHabit(habit.id)} />
         </HabitDiv>
     );
 }

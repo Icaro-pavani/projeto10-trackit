@@ -1,12 +1,15 @@
+import { useContext } from "react";
 import styled from "styled-components";
 
+import UserInfoContext from "./contexts/UserInfoContext";
+
 export default function Header() {
-    const linkImage = "https://i.imgur.com/3UG2xRz.png";
+    const {userInfo} = useContext(UserInfoContext);
 
     return (
         <HeaderSection>
             <h1>TrackIt</h1>
-            <img src={linkImage} alt="logo" />
+            <img src={userInfo.image} alt="logo" />
         </HeaderSection>
     );
 }

@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 import { ThreeDots } from "react-loader-spinner";
+import axios from "axios";
+
+import UserInfoContext from "./contexts/UserInfoContext";
 
 export default function AddHabitForm({setAddHabit, newHabit, setNewHabit}) {
     const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
+    const HABIT_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
     const [disabled, setDisabled] = useState(false);
+    const { userInfo, setUserInfo } = useContext(UserInfoContext);
 
     function getNameNewHabit(event) {
         const {name, value} = event.target;
@@ -18,8 +23,28 @@ export default function AddHabitForm({setAddHabit, newHabit, setNewHabit}) {
             setNewHabit({...newHabit});
         } else {
             newHabit.days.push(index);
-            setNewHabit({...newHabit});
+            setNewHabit({...newHabit, days: newHabit.days.sort()});
         }
+    }
+
+    function sendNewHabit() {
+        setDisabled(true);
+        const promise = axios.post(HABIT_URL, newHabit, {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        });
+        promise.then(({data}) => {
+            console.log(data);
+            setNewHabit({ days: [] });
+            setUserInfo({...userInfo});
+            setDisabled(false);
+            setAddHabit(false);
+        });
+        promise.catch(error => {
+            alert(error.response.log);
+            setDisabled(false);
+        });
     }
 
     return (
@@ -30,7 +55,7 @@ export default function AddHabitForm({setAddHabit, newHabit, setNewHabit}) {
             </DaysButtons>
             <ConfirmationButtons>
                 <CancelButton disabled={disabled} onClick={() => setAddHabit(false)}>Cancelar</CancelButton>
-                <SaveButton disabled={disabled} onClick={() => setDisabled(true)}>{disabled ? <ThreeDots color="#fff" height={30} width={30} /> : "Salvar"}</SaveButton>
+                <SaveButton disabled={disabled} onClick={sendNewHabit}>{disabled ? <ThreeDots color="#fff" height={30} width={30} /> : "Salvar"}</SaveButton>
             </ConfirmationButtons>
         </HabitForm>
     );

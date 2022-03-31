@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 import Header from "./Header";
 import Menu from "./Menu";
@@ -12,15 +13,21 @@ export default function Habits() {
     const [addHabit, setAddHabit] = useState(false);
     const [newHabit, setNewHabit] = useState({ days: [] });
 
-    const { userInfo, setUserInfo } = useContext(UserInfoContext);
+    const HABIT_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
-    
-    console.log(newHabit.days);
-    console.log(userInfo);
-    console.log(habits);
+    const { userInfo } = useContext(UserInfoContext);
+
     useEffect(() => {
-        setHabits([]);
-    }, [])
+        const promise = axios.get(HABIT_URL, {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        });
+        promise.then(({ data }) => {
+            setHabits(data);
+        });
+        promise.catch(error => console.log(error.response.data));
+    }, [userInfo]);
 
     return (
         <HabitsSection>
