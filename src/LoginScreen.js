@@ -1,24 +1,33 @@
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 
 import Trackit from "./assets/Trackit.svg";
 import UserInfoContext from "./contexts/UserInfoContext";
 
-export default function LoginScreen(){
+export default function LoginScreen() {
     const [disabled, setDisabled] = useState(false);
     const [loginInfo, setLoginInfo] = useState({});
 
-    const { setUserInfo } = useContext(UserInfoContext);
+    const { userInfo ,setUserInfo } = useContext(UserInfoContext);
+
+    let loginReturnObject = localStorage.getItem("loginInfo");
 
     const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
     const navigate = useNavigate();
 
+
+    useEffect(() => {
+        if (userInfo.token) {
+            navigate("/hoje");
+        }
+    }, [ userInfo, navigate]);
+
     function updateLoginInfo(event) {
-        const {name, value} = event.target;
-        setLoginInfo(prevState => ({...prevState, [name]: value}));
+        const { name, value } = event.target;
+        setLoginInfo(prevState => ({ ...prevState, [name]: value }));
     }
 
     function submitLoginInfo(event) {
@@ -26,7 +35,10 @@ export default function LoginScreen(){
         const promise = axios.post(URL, loginInfo);
         setDisabled(true);
 
-        promise.then(({data}) => {
+        promise.then(({ data }) => {
+            loginReturnObject = JSON.stringify(data);
+            // console.log(loginReturnObject);
+            localStorage.setItem("loginInfo", loginReturnObject);
             setUserInfo(data);
             navigate("/hoje");
         });

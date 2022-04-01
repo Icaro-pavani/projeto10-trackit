@@ -41,7 +41,8 @@ export default function Menu() {
                             pathColor: "#fff",
                             trailColor: "transparent",
                             textSize: "18px",
-                            strokeLinecap: "round"
+                            strokeLinecap: "round",
+                            pathTransitionDuration: 0.75
                         })}
                     />
                 </StyledLink>

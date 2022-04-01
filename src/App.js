@@ -11,7 +11,10 @@ import Historic from "./Historic";
 import UserInfoContext from "./contexts/UserInfoContext";
 
 export default function App() {
-    const [userInfo, setUserInfo] = useState({ name: "Icaro" });
+    const loginReturnObject = localStorage.getItem("loginInfo");
+    
+    const [userInfo, setUserInfo] = useState(loginReturnObject ? JSON.parse(loginReturnObject) : {name: ""});
+
     const [porcentageDone, setPorcentageDone] = useState(0);
 
     return (
