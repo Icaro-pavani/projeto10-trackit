@@ -10,6 +10,8 @@ import Historic from "./Historic";
 
 import UserInfoContext from "./contexts/UserInfoContext";
 
+import 'react-calendar/dist/Calendar.css';
+
 export default function App() {
     const loginReturnObject = localStorage.getItem("loginInfo");
     
