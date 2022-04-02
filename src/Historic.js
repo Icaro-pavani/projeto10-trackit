@@ -63,7 +63,7 @@ export default function Historic() {
                 <Calendar className="calendar"
                     formatDay={(locale, date) => checkHabitsDone(date)}
                     calendarType="US" tileClassName={'standard'}
-                    onClickDay={(value, event) => days[dayjs(value).format('DD/MM/YYYY')] ? setListHabits([...days[dayjs(value).format('DD/MM/YYYY')]]) : null}
+                    onClickDay={(value, event) => days[dayjs(value).format('DD/MM/YYYY')] ? setListHabits([...days[dayjs(value).format('DD/MM/YYYY')]]) : setListHabits([])}
                     // tileDisabled={({activeStartDate, date, view }) => days[dayjs(date).format('DD/MM/YYYY')] ? false : true}
                     onChange={setValue}
                     value={value}
