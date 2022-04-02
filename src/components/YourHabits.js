@@ -81,4 +81,5 @@ const DayButton = styled.input`
     background-color: ${props => props.selected ? "#cfcfcf" : "#fff"};
     color: ${props => props.selected ? "#fff" : "#dbdbdb"};
     margin-right: 4px;
+    -webkit-appearance: none;
 `;
