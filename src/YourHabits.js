@@ -63,13 +63,16 @@ const HabitDiv = styled.div`
 `;
 
 const DaysButtons = styled.div`
-    width: 100%;
+    /* width: 100%; */
     display: flex;
 `;
 
 const DayButton = styled.button`
-    width: 30px;
-    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 30px;
+    max-height: 30px;
     border-radius: 5px;
     font-family: 'Lexend Deca', sans-serif;
     font-size: 20px;
