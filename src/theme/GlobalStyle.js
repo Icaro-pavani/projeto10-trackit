@@ -136,10 +136,16 @@ const GlobalStyle = createGlobalStyle`
         --color-complete-habits-day: #8CC654;
         --color-incomplete-habits-day: #EA5766;
     }
-
+    
+    html,
     body {
         font-family: 'Lexend Deca', sans-serif;
         background-color: #f2f2f2;
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow-x: hidden; 
     }
 `;
 
