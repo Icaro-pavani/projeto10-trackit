@@ -50,10 +50,11 @@ export default function Habits() {
 
 const HabitsSection = styled.main`
     width: 100%;
-    max-height: calc(100vh - 160px);
-    overflow: scroll;
+    /* max-height: calc(100vh - 160px);
+    overflow: scroll; */
     background-color: #f2f2f2;
     margin-top: 70px;
+    margin-bottom: 90px;
 `;
 
 const MyHabitsHeader = styled.div`

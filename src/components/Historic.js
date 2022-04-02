@@ -87,15 +87,15 @@ export default function Historic() {
 
 const HistoricSection = styled.main`
     width: 100%;
-    max-height: calc(100vh - 160px);
-    overflow: scroll;
+    /* max-height: calc(100vh - 160px);
+    overflow: scroll; */
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #f2f2f2;
     margin-top: 70px;
     /* padding-bottom: 100px; */
-    /* margin-bottom: 50px; */
+    margin-bottom: 90px;
 `;
 
 const HistoricHeader = styled.div`
