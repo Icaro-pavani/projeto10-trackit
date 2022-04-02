@@ -58,6 +58,7 @@ const MenuSection = styled.div`
     position: fixed;
     bottom: 0;
     left: 0;
+    z-index: 3;
     display: flex;
     justify-content: space-between;
     align-items: center;

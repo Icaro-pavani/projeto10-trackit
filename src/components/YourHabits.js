@@ -81,4 +81,5 @@ const DayButton = styled.button`
     background-color: ${props => props.selected ? "#cfcfcf" : "#fff"};
     color: ${props => props.selected ? "#fff" : "#dbdbdb"};
     margin-right: 4px;
+    -webkit-box-pack: none;
 `;
