@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-import UserInfoContext from "./contexts/UserInfoContext";
+import UserInfoContext from "./../contexts/UserInfoContext";
 
 export default function Habit({ habit }) {
     const { userInfo, setUserInfo } = useContext(UserInfoContext);

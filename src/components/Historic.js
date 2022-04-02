@@ -6,7 +6,7 @@ import axios from "axios";
 import Calendar from "react-calendar";
 import Header from "./Header";
 import Menu from "./Menu";
-import UserInfoContext from "./contexts/UserInfoContext";
+import UserInfoContext from "./../contexts/UserInfoContext";
 import { IoCloseCircle, IoCheckmarkCircle } from "react-icons/io5";
 
 

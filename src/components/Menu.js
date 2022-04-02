@@ -4,7 +4,7 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import UserInfoContext from "./contexts/UserInfoContext";
+import UserInfoContext from "./../contexts/UserInfoContext";
 import calculatePorcentageDone from "./calculatePorcentageDone";
 
 export default function Menu() {

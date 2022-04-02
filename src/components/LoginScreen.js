@@ -1,32 +1,47 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 
-import Trackit from "./assets/Trackit.svg";
+import Trackit from "./../assets/Trackit.svg";
+import UserInfoContext from "./../contexts/UserInfoContext";
 
-export default function SignInScreen(){
+export default function LoginScreen() {
     const [disabled, setDisabled] = useState(false);
-    const [signInInfo, setSignInInfo] = useState({});
+    const [loginInfo, setLoginInfo] = useState({});
+
+    const { userInfo ,setUserInfo } = useContext(UserInfoContext);
+
+    let loginReturnObject = localStorage.getItem("loginInfo");
+
+    const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
     const navigate = useNavigate();
 
-    const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up";
 
-    function updateSignInState(event) {
-        const {value, name} = event.target;
-        setSignInInfo(prevState => ({...prevState, [name]: value}));
+    useEffect(() => {
+        if (userInfo.token) {
+            navigate("/hoje");
+        }
+    }, [ userInfo, navigate]);
+
+    function updateLoginInfo(event) {
+        const { name, value } = event.target;
+        setLoginInfo(prevState => ({ ...prevState, [name]: value }));
     }
 
-    function sendSignInInfo(event){
+    function submitLoginInfo(event) {
         event.preventDefault();
+        const promise = axios.post(URL, loginInfo);
         setDisabled(true);
-        const promise = axios.post(URL, signInInfo);
 
-        promise.then(({data}) => {
-            console.log(data);
-            navigate("/");         
-        })
+        promise.then(({ data }) => {
+            loginReturnObject = JSON.stringify(data);
+            // console.log(loginReturnObject);
+            localStorage.setItem("loginInfo", loginReturnObject);
+            setUserInfo(data);
+            navigate("/hoje");
+        });
 
         promise.catch(error => {
             console.log(error.response.data);
@@ -36,21 +51,19 @@ export default function SignInScreen(){
     }
 
     return (
-        <SignIn>
+        <Login>
             <img src={Trackit} alt="Trackit" />
-            <FormSignIn onSubmit={sendSignInInfo}>
-                <input type="email" name="email" onChange={updateSignInState} disabled={disabled} placeholder="email" required />
-                <input type="password" name="password" onChange={updateSignInState} disabled={disabled} placeholder="senha" required />
-                <input type="text" name="name" onChange={updateSignInState} disabled={disabled} placeholder="nome" required />
-                <input type="url" name="image" onChange={updateSignInState} disabled={disabled} placeholder="foto" required />
-                <button type="submit" disabled={disabled}>{disabled ? <ThreeDots color="#fff" height={40} width={40} /> : "Cadastrar"}</button>
-            </FormSignIn>
-            <Link to="/"><p>Já tem uma conta? Faça login!</p></Link>
-        </SignIn>
+            <FormLogin onSubmit={submitLoginInfo}>
+                <input type="email" name="email" onChange={updateLoginInfo} disabled={disabled} placeholder="email" required />
+                <input type="password" name="password" onChange={updateLoginInfo} disabled={disabled} placeholder="senha" required />
+                <button type="submit" disabled={disabled}>{disabled ? <ThreeDots color="#fff" height={40} width={40} /> : "Entrar"}</button>
+            </FormLogin>
+            <Link to="/cadastro"><p>Não tem uma conta? Cadastre-se!</p></Link>
+        </Login>
     );
 }
 
-const SignIn = styled.div`
+const Login = styled.div`
     width: 100%;
     height: 100vh;
     background-color: #fff;
@@ -63,8 +76,8 @@ const SignIn = styled.div`
     img {
         width: 180px;
         height: 178px;
+        margin-top: 68px;
         margin-bottom: 32px;
-        margin-top: 68px
     }
 
     p {
@@ -75,7 +88,7 @@ const SignIn = styled.div`
     }
 `;
 
-const FormSignIn = styled.form`
+const FormLogin = styled.form`
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -85,11 +98,11 @@ const FormSignIn = styled.form`
     input {
         width: 303px;
         height: 45px;
-        border: 1px solid #d5d5d5;
         border-radius: 5px;
         font-family: 'Lexend Deca', sans-serif;
         font-size: 20px;
         line-height: 25px;
+        border: 1px solid #d5d5d5;
         padding-left: 11px;
         margin-bottom: 6px;
         color: #afafaf;
@@ -118,9 +131,5 @@ const FormSignIn = styled.form`
         &:disabled {
             opacity: 0.7;
         }
-    }
-
-    ::placeholder {
-        color: #d5d5d5;
-    }
+    }   
 `;

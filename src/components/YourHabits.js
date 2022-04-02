@@ -2,8 +2,8 @@ import { useContext } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-import trash from "./assets/trash.svg";
-import UserInfoContext from "./contexts/UserInfoContext";
+import trash from "./../assets/trash.svg";
+import UserInfoContext from "./../contexts/UserInfoContext";
 
 export default function YourHabits({ habit }){
     const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
@@ -81,5 +81,4 @@ const DayButton = styled.button`
     background-color: ${props => props.selected ? "#cfcfcf" : "#fff"};
     color: ${props => props.selected ? "#fff" : "#dbdbdb"};
     margin-right: 4px;
-    -webkit-appearance: none;
 `;

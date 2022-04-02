@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 
-import UserInfoContext from "./contexts/UserInfoContext";
+import UserInfoContext from "./../contexts/UserInfoContext";
 
 export default function AddHabitForm({setAddHabit, newHabit, setNewHabit}) {
     const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];

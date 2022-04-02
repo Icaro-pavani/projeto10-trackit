@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import GlobalStyle from "./theme/GlobalStyle";
+import GlobalStyle from "./../theme/GlobalStyle";
 
 import LoginScreen from "./LoginScreen";
 import SignInScreen from "./SignInScreen";
@@ -8,7 +8,7 @@ import Today from "./Today";
 import Habits from "./Habits";
 import Historic from "./Historic";
 
-import UserInfoContext from "./contexts/UserInfoContext";
+import UserInfoContext from "./../contexts/UserInfoContext";
 
 import 'react-calendar/dist/Calendar.css';
 

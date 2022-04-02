@@ -6,7 +6,7 @@ import Header from "./Header";
 import Menu from "./Menu";
 import AddHabitForm from "./AddHabitForm";
 import YourHabits from "./YourHabits";
-import UserInfoContext from "./contexts/UserInfoContext";
+import UserInfoContext from "./../contexts/UserInfoContext";
 
 export default function Habits() {
     const [habits, setHabits] = useState([]);

@@ -6,7 +6,7 @@ import axios from "axios";
 import Header from "./Header";
 import Menu from "./Menu";
 import Habit from "./Habit";
-import UserInfoContext from "./contexts/UserInfoContext";
+import UserInfoContext from "./../contexts/UserInfoContext";
 import calculatePorcentageDone from "./calculatePorcentageDone";
 
 export default function Today() {
