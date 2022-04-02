@@ -65,15 +65,18 @@ export default function LoginScreen() {
 
 const Login = styled.div`
     width: 100%;
+    height: 100vh;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
-    margin-top: 68px;
+    /* margin-top: 68px; */
 
     img {
         width: 180px;
         height: 178px;
+        margin-top: 68px;
         margin-bottom: 32px;
     }
 

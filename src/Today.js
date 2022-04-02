@@ -69,7 +69,8 @@ export default function Today() {
 
 const TodaySection = styled.main`
     width: 100%;
-    height: calc(100vh - 70px);
+    max-height: calc(100vh - 160px);
+    overflow: scroll;
     background-color: #f2f2f2;
     margin-top: 70px;
 `;

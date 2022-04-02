@@ -133,10 +133,13 @@ const GlobalStyle = createGlobalStyle`
 
     * {
         box-sizing: border-box;
+        --color-complete-habits-day: #8CC654;
+        --color-incomplete-habits-day: #EA5766;
     }
 
     body {
         font-family: 'Lexend Deca', sans-serif;
+        background-color: #f2f2f2;
     }
 `;
 
