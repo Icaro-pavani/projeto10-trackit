@@ -5,7 +5,7 @@ import axios from "axios";
 
 import UserInfoContext from "./../contexts/UserInfoContext";
 
-export default function AddHabitForm({setAddHabit, newHabit, setNewHabit}) {
+export default function AddHabitForm({ setAddHabit, newHabit, setNewHabit }) {
     const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
     const HABIT_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
@@ -13,17 +13,19 @@ export default function AddHabitForm({setAddHabit, newHabit, setNewHabit}) {
     const { userInfo, setUserInfo } = useContext(UserInfoContext);
 
     function getNameNewHabit(event) {
-        const {name, value} = event.target;
-        setNewHabit(prevState => ({...prevState, [name]: value}));
+        const { name, value } = event.target;
+        setNewHabit(prevState => ({ ...prevState, [name]: value }));
     }
 
-    function selectWeekday(index){
-        if (newHabit.days.includes(index)){
-            newHabit.days = newHabit.days.filter(day => day !== index);
-            setNewHabit({...newHabit});
-        } else {
-            newHabit.days.push(index);
-            setNewHabit({...newHabit, days: newHabit.days.sort()});
+    function selectWeekday(index, disabled) {
+        if (!disabled) {
+            if (newHabit.days.includes(index)) {
+                newHabit.days = newHabit.days.filter(day => day !== index);
+                setNewHabit({ ...newHabit });
+            } else {
+                newHabit.days.push(index);
+                setNewHabit({ ...newHabit, days: newHabit.days.sort() });
+            }
         }
     }
 
@@ -36,7 +38,7 @@ export default function AddHabitForm({setAddHabit, newHabit, setNewHabit}) {
         });
         promise.then(() => {
             setNewHabit({ days: [] });
-            setUserInfo({...userInfo});
+            setUserInfo({ ...userInfo });
             setDisabled(false);
             setAddHabit(false);
         });
@@ -50,7 +52,7 @@ export default function AddHabitForm({setAddHabit, newHabit, setNewHabit}) {
         <HabitForm>
             <input type="text" name="name" disabled={disabled} onChange={getNameNewHabit} value={newHabit.name ? newHabit.name : ""} placeholder="nome do hábito" />
             <DaysButtons>
-                {weekdays.map((day, index) => <DayButton key={index} disabled={disabled} onClick={() => selectWeekday(index)} selected={newHabit.days.includes(index)}>{day}</DayButton>)}
+                {weekdays.map((day, index) => <DayButton key={index} onClick={() => selectWeekday(index, disabled)} selected={newHabit.days.includes(index)}>{day}</DayButton>)}
             </DaysButtons>
             <ConfirmationButtons>
                 <CancelButton disabled={disabled} onClick={() => setAddHabit(false)}>Cancelar</CancelButton>
@@ -97,8 +99,7 @@ const DaysButtons = styled.div`
     display: flex;
 `;
 
-const DayButton = styled.button`
-    -webkit-appearance: none;
+const DayButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;

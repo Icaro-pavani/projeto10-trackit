@@ -27,9 +27,9 @@ export default function YourHabits({ habit }){
     return (
         <HabitDiv>
             <h3>{habit.name}</h3>
-            <DaysButtons>
-                {weekdays.map((day, index) => <DayButton key={index} type="button" disabled={true} selected={habit.days.includes(index)} value={day}/>)}
-            </DaysButtons>
+            <DaysSelected>
+                {weekdays.map((day, index) => <Day key={index} selected={habit.days.includes(index)}>{day}</Day>)}
+            </DaysSelected>
             <img src={trash} alt="trash can" onClick={() => deleteHabit(habit.id)} />
         </HabitDiv>
     );
@@ -62,13 +62,12 @@ const HabitDiv = styled.div`
     }
 `;
 
-const DaysButtons = styled.div`
+const DaysSelected = styled.div`
     width: 100%;
     display: flex;
 `;
 
-const DayButton = styled.input`
-    -webkit-appearance: none;
+const Day = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
