@@ -55,7 +55,7 @@ export default function Today() {
             <Header />
             <TodaysHeader>
                 <h2>{weekday(dayjs().format('d'))}, {dayjs().format('DD/MM')}</h2>
-                {porcentageDone !== '0' ? <HabitsTrack color={"#8fc549"}>{porcentageDone}% dos hábitos concluídos</HabitsTrack> : <HabitsTrack color="#bababa">Nenhum hábito concluído ainda</HabitsTrack>}
+                {porcentageDone !== '0' && todaysHabits.length > 0 ? <HabitsTrack color={"#8fc549"}>{porcentageDone}% dos hábitos concluídos</HabitsTrack> : <HabitsTrack color="#bababa">Nenhum hábito concluído ainda</HabitsTrack>}
             </TodaysHeader>
             <TodaysHabits>
                 {todaysHabits.map((habit, index) => <Habit key={index} habit={habit}/>)}
