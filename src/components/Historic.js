@@ -57,14 +57,12 @@ export default function Historic() {
             <Header />
             <HistoricHeader>
                 <h2>Histórico</h2>
-                {/* <p>Em breve você poderá ver o histórico dos seus hábitos aqui!</p> */}
             </HistoricHeader>
             <CalendarSection>
                 <Calendar className="calendar"
                     formatDay={(locale, date) => checkHabitsDone(date)}
                     calendarType="US" tileClassName={'standard'}
                     onClickDay={(value, event) => days[dayjs(value).format('DD/MM/YYYY')] ? setListHabits([...days[dayjs(value).format('DD/MM/YYYY')]]) : setListHabits([])}
-                    // tileDisabled={({activeStartDate, date, view }) => days[dayjs(date).format('DD/MM/YYYY')] ? false : true}
                     onChange={setValue}
                     value={value}
                 />
@@ -87,14 +85,10 @@ export default function Historic() {
 
 const HistoricSection = styled.main`
     width: 100%;
-    /* max-height: calc(100vh - 160px);
-    overflow: scroll; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f2f2f2;
     margin-top: 70px;
-    /* padding-bottom: 100px; */
     margin-bottom: 90px;
 `;
 
@@ -105,7 +99,7 @@ const HistoricHeader = styled.div`
     h2 {
         font-size: 23px;
         line-height: 29px;
-        color: #126ba5;
+        color: var(--routes-title-color);
         margin-bottom: 11px;
     }
 
@@ -123,7 +117,7 @@ const CalendarSection = styled.div`
         height: 402px;
         border: none;
         border-radius: 10px;
-        background-color: #fff;
+        background-color: var(--menu-background-color);
         font-size: 17px;
 
         .react-calendar__month-view__days {
@@ -134,7 +128,6 @@ const CalendarSection = styled.div`
     }
 
     .standard {
-        /* max-width: 30px; */
         height: 50px;
         margin: 5px 0px;
         font-size: 15px;
@@ -170,18 +163,12 @@ const CalendarSection = styled.div`
     .react-calendar__tile--active:enabled:hover,
     .react-calendar__tile--active:enabled:focus {
         color: inherit;
-        background: none;
+        background: inherit;
     }
 
     .react-calendar__tile--now {
       background: #ffff76;
     }
-    
-    /* .react-calendar__navigation button:disabled,
-    .react-calendar__tile:disabled {
-      background-color: transparent;
-      color: inherit;
-    } */
 `;
 
 const HabitsList = styled.ul`
@@ -197,7 +184,7 @@ const HabitsList = styled.ul`
     h3 {
         font-size: 20px;
         line-height: 25px;
-        color: #52b6ff;
+        color: var(--theme-color);
         margin-bottom: 15px;
     }
 `;
@@ -213,7 +200,7 @@ const HabitElement = styled.li`
     p {
         font-size: 16px;
         line-height: 22px;
-        color: #666;
+        color: var(--text-color);
     }
 
     &.habit-done {

@@ -38,7 +38,7 @@ export default function YourHabits({ habit }){
 const HabitDiv = styled.div`
     width: 340px;
     height: 91px;
-    background-color: #fff;
+    background-color: var(--menu-background-color);
     position: relative;
     top: 0;
     left: 0;
@@ -49,7 +49,7 @@ const HabitDiv = styled.div`
     h3 {
         font-size: 20px;
         line-height: 25px;
-        color: #666;
+        color: var(--text-color);
         margin-bottom: 8px;
     }
 
@@ -77,7 +77,7 @@ const Day = styled.div`
     font-family: 'Lexend Deca', sans-serif;
     font-size: 20px;
     line-height: 25px;
-    border: 1px solid #d5d5d5;    
+    border: 1px solid var(--input-border-color);    
     background-color: ${props => props.selected ? "#cfcfcf" : "#fff"};
     color: ${props => props.selected ? "#fff" : "#dbdbdb"};
     margin-right: 4px;

@@ -37,7 +37,6 @@ export default function LoginScreen() {
 
         promise.then(({ data }) => {
             loginReturnObject = JSON.stringify(data);
-            // console.log(loginReturnObject);
             localStorage.setItem("loginInfo", loginReturnObject);
             setUserInfo(data);
             navigate("/hoje");
@@ -66,12 +65,10 @@ export default function LoginScreen() {
 const Login = styled.div`
     width: 100%;
     height: 100vh;
-    background-color: #fff;
+    background-color: var(--background-login-color);
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
-    /* margin-top: 68px; */
 
     img {
         width: 180px;
@@ -83,7 +80,7 @@ const Login = styled.div`
     p {
         font-size: 14px;
         line-height: 17px;
-        color: #52b6ff;
+        color: var(--theme-color);
         text-decoration: underline;
     }
 `;
@@ -102,15 +99,15 @@ const FormLogin = styled.form`
         font-family: 'Lexend Deca', sans-serif;
         font-size: 20px;
         line-height: 25px;
-        border: 1px solid #d5d5d5;
+        border: 1px solid var(--input-border-color);
         padding-left: 11px;
         margin-bottom: 6px;
-        color: #afafaf;
+        color: var(--text-color);
         &::placeholder {
-            color: #dbdbdb;
+            color: var(--placeholder-color);
         }
         &:disabled {
-            background-color: #f2f2f2;
+            background-color: var(--disabled-color);
         }
     }
 
@@ -121,7 +118,7 @@ const FormLogin = styled.form`
         font-family: 'Lexend Deca', sans-serif;
         font-size: 21px;
         line-height: 26px;
-        background-color: #52b6ff;
+        background-color: var(--theme-color);
         border: none;
         border-radius: 4.7px;
         margin-bottom: 25px;

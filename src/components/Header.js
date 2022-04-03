@@ -21,7 +21,7 @@ const HeaderSection = styled.header`
     height: 70px;
     justify-content: space-between;
     align-items:  center;
-    background-color: #126ba5;
+    background-color: var(--header-background-color);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     padding: 0 18px;
     position: fixed;
@@ -32,7 +32,7 @@ const HeaderSection = styled.header`
     h1 {
         font-size: 39px;
         line-height: 49px;
-        color: #fff;
+        color: var(--menu-background-color);
     }
 
     img {

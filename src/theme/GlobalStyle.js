@@ -135,6 +135,17 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         --color-complete-habits-day: #8CC654;
         --color-incomplete-habits-day: #EA5766;
+        --background-login-color: #fff;
+        --theme-color: #52b6ff;
+        --input-border-color: #d5d5d5;
+        --text-color: #666;
+        --placeholder-color: #dbdbdb;
+        --disabled-color: #f2f2f2;
+        --routes-title-color: #126ba5;
+        --menu-background-color: #fff;
+        --header-background-color: #126ba5;
+        --checked-color: #8fc549;
+        --unchecked-color: #e7e7e7;
     }
     
     html,

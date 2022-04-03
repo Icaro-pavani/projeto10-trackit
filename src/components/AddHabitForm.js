@@ -69,7 +69,7 @@ const HabitForm = styled.div`
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: var(--menu-background-color);
     border-radius: 5px;
     padding: 18px 18px 15px;
     margin-top: 20px;
@@ -81,15 +81,15 @@ const HabitForm = styled.div`
         font-family: 'Lexend Deca', sans-serif;
         font-size: 20px;
         line-height: 25px;
-        border: 1px solid #d5d5d5;
+        border: 1px solid var(--input-border-color);
         padding-left: 11px;
         margin-bottom: 8px;
-        color: #afafaf;
+        color: var(--text-color);
         &::placeholder {
-            color: #dbdbdb;
+            color: var(--placeholder-color);
         }
         &:disabled {
-            background-color: #f2f2f2;
+            background-color: var(--disabled-color);
         }
     }
 `;
@@ -109,7 +109,7 @@ const DayButton = styled.div`
     font-family: 'Lexend Deca', sans-serif;
     font-size: 20px;
     line-height: 25px;
-    border: 1px solid #d5d5d5;    
+    border: 1px solid var(--input-border-color);    
     background-color: ${props => props.selected ? "#cfcfcf" : "#fff"};
     color: ${props => props.selected ? "#fff" : "#dbdbdb"};
     margin-right: 4px;
@@ -125,8 +125,8 @@ const ConfirmationButtons = styled.div`
 const CancelButton = styled.button`
     width: 84px;
     border: none;
-    background-color: #fff;
-    color: #52b6ff;
+    background-color: var(--menu-background-color);
+    color: var(--theme-color);
     font-family: 'Lexend Deca', sans-serif;
     font-size: 16px;
     line-height: 20px;
@@ -143,8 +143,8 @@ const SaveButton = styled.button`
     width: 84px;
     height: 35px;
     border: none;
-    background-color: #52b6ff;
-    color: #fff;
+    background-color: var(--theme-color);
+    color: var(--menu-background-color);
     font-family: 'Lexend Deca', sans-serif;
     font-size: 16px;
     line-height: 20px;

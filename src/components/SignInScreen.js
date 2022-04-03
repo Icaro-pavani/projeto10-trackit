@@ -53,12 +53,10 @@ export default function SignInScreen(){
 const SignIn = styled.div`
     width: 100%;
     height: 100vh;
-    background-color: #fff;
+    background-color: var(--background-login-color);
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
-    /* margin-top: 68px; */
 
     img {
         width: 180px;
@@ -70,7 +68,7 @@ const SignIn = styled.div`
     p {
         font-size: 14px;
         line-height: 17px;
-        color: #52b6ff;
+        color: var(--theme-color);
         text-decoration: underline;
     }
 `;
@@ -85,19 +83,19 @@ const FormSignIn = styled.form`
     input {
         width: 303px;
         height: 45px;
-        border: 1px solid #d5d5d5;
+        border: 1px solid var(--input-border-color);
         border-radius: 5px;
         font-family: 'Lexend Deca', sans-serif;
         font-size: 20px;
         line-height: 25px;
         padding-left: 11px;
         margin-bottom: 6px;
-        color: #afafaf;
+        color: var(--text-color);
         &::placeholder {
-            color: #dbdbdb;
+            color: var(--placeholder-color);
         }
         &:disabled {
-            background-color: #f2f2f2;
+            background-color: var(--disabled-color);
         }
     }
 
@@ -108,7 +106,7 @@ const FormSignIn = styled.form`
         font-family: 'Lexend Deca', sans-serif;
         font-size: 21px;
         line-height: 26px;
-        background-color: #52b6ff;
+        background-color: var(--theme-color);
         border: none;
         border-radius: 4.7px;
         margin-bottom: 25px;
@@ -118,9 +116,5 @@ const FormSignIn = styled.form`
         &:disabled {
             opacity: 0.7;
         }
-    }
-
-    ::placeholder {
-        color: #d5d5d5;
     }
 `;

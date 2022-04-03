@@ -29,8 +29,6 @@ export default function Today() {
         promise.catch(error => console.log(error));
     },[userInfo, setPorcentageDone]);
 
-    const isDone = todaysHabits.map(habit => habit.done);
-
     function weekday(day) {
         switch(day){
             case '0':
@@ -57,7 +55,7 @@ export default function Today() {
             <Header />
             <TodaysHeader>
                 <h2>{weekday(dayjs().format('d'))}, {dayjs().format('DD/MM')}</h2>
-                {isDone.includes(true) ? <HabitsTrack color={"#8fc549"}>{porcentageDone}% dos hábitos concluídos</HabitsTrack> : <HabitsTrack color="#bababa">Nenhum hábito concluído ainda</HabitsTrack>}
+                {porcentageDone !== '0' ? <HabitsTrack color={"#8fc549"}>{porcentageDone}% dos hábitos concluídos</HabitsTrack> : <HabitsTrack color="#bababa">Nenhum hábito concluído ainda</HabitsTrack>}
             </TodaysHeader>
             <TodaysHabits>
                 {todaysHabits.map((habit, index) => <Habit key={index} habit={habit}/>)}
@@ -69,9 +67,6 @@ export default function Today() {
 
 const TodaySection = styled.main`
     width: 100%;
-    /* max-height: calc(100vh - 160px);
-    overflow: scroll; */
-    background-color: #f2f2f2;
     margin-top: 70px;
     margin-bottom: 90px;
 `;
@@ -83,7 +78,7 @@ const TodaysHeader = styled.div`
     h2 {
         font-size: 23px;
         line-height: 29px;
-        color: #126ba5;
+        color: var(--routes-title-color);
     }
 `;
 

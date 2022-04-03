@@ -26,7 +26,7 @@ export default function Habit({ habit }) {
         }
         promise.then(() => {
             setUserInfo({...userInfo});
-        })
+        });
     }
 
     return (
@@ -46,11 +46,11 @@ export default function Habit({ habit }) {
 const HabitSection = styled.div`
     width: 340px;
     height: 94px;
-    background-color: #fff;
+    background-color: var(--menu-background-color);
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
-    padding: 12px 13px; 
+    padding: 12px 13px;
     margin-bottom: 10px;
 `;
 
@@ -58,23 +58,23 @@ const Description = styled.div`
     h3 {
         font-size: 20px;
         line-height: 25px;
-        color: #666;
+        color: var(--text-color);
         margin-bottom: 7px;
     }
 
     p {
         font-size: 13px;
         line-height: 16px;
-        color: #666;
+        color: var(--text-color);
     }
 `;
 
 const Checked = styled.span`
-    color: ${props => props.checked === true ? "#8fc549" : "#666"};
+    color: ${props => props.checked === true ? "var(--checked-color)" : "var(--text-color)"};
 `;
 
 const Matched = styled.span`
-    color: ${props => props.difference === 0 ? "#8fc549" : "#666"};
+    color: ${props => props.difference === 0 ? "var(--checked-color)" : "var(--text-color)"};
 `;
 
 const SelectionBox = styled.div`
@@ -84,6 +84,6 @@ const SelectionBox = styled.div`
     ion-icon {
         width: 69px;
         height: 69px;
-        color: ${props => props.checked === true ? "#8fc549" : "#e7e7e7"};
+        color: ${props => props.checked === true ? "var(--checked-color)" : "var(--unchecked-color)"};
     }
 `;

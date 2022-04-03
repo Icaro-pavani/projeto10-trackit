@@ -36,9 +36,9 @@ export default function Menu() {
                         background
                         backgroundPadding={6}
                         styles={buildStyles({
-                            backgroundColor: "#52b6ff",
-                            textColor: "#fff",
-                            pathColor: "#fff",
+                            backgroundColor: "var(--theme-color)",
+                            textColor: "var(--menu-background-color)",
+                            pathColor: "var(--menu-background-color)",
                             trailColor: "transparent",
                             textSize: "18px",
                             strokeLinecap: "round",
@@ -62,13 +62,13 @@ const MenuSection = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
+    background-color: var(--menu-background-color);
     padding: 0 36px;
 
     h3 {
         font-size: 18px;
         line-height: 23px;
-        color: #52b6ff;
+        color: var(--theme-color);
     }
 
     .Link {

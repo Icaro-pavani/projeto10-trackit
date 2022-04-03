@@ -50,9 +50,6 @@ export default function Habits() {
 
 const HabitsSection = styled.main`
     width: 100%;
-    /* max-height: calc(100vh - 160px);
-    overflow: scroll; */
-    background-color: #f2f2f2;
     margin-top: 70px;
     margin-bottom: 90px;
 `;
@@ -67,14 +64,14 @@ const MyHabitsHeader = styled.div`
     h2 {
         font-size: 23px;
         line-height: 29px;
-        color: #126ba5;
+        color: var(--routes-title-color);
     }
 `;
 
 const AddButton = styled.div`
     width: 40px;
     height: 35px;
-    background-color: #52b6ff;
+    background-color: var(--theme-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,7 +79,7 @@ const AddButton = styled.div`
     cursor: pointer;
 
     ion-icon {
-        color: #fff;
+        color: var(--menu-background-color);
         font-size: 16px;
         --ionicon-stroke-width: 64px;
     }
@@ -97,7 +94,7 @@ const HabitList = styled.div`
     p {
         font-size: 18px;
         line-height: 22px;
-        color: #666;
+        color: var(--text-color);
         padding: 0 18px;
         margin-top: 10px;
     }
