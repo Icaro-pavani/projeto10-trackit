@@ -98,6 +98,10 @@ const DaysButtons = styled.div`
 `;
 
 const DayButton = styled.button`
+    -webkit-appearance: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 30px;
     height: 30px;
     border-radius: 5px;
