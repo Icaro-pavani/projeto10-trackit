@@ -65,6 +65,8 @@ const HabitDiv = styled.div`
 const DaysButtons = styled.div`
     width: 100%;
     display: flex;
+    -webkit-appearance: none;
+    -webkit-box-pack: start;
 `;
 
 const DayButton = styled.input`
@@ -81,6 +83,5 @@ const DayButton = styled.input`
     background-color: ${props => props.selected ? "#cfcfcf" : "#fff"};
     color: ${props => props.selected ? "#fff" : "#dbdbdb"};
     margin-right: 4px;
-    -webkit-appearance: none;
-    -webkit-box-sizing: border-box;
+     
 `;
