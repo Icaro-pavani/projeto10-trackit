@@ -65,11 +65,10 @@ const HabitDiv = styled.div`
 const DaysButtons = styled.div`
     width: 100%;
     display: flex;
-    -webkit-appearance: none;
-    -webkit-box-pack: start;
 `;
 
 const DayButton = styled.input`
+    -webkit-appearance: none;
     display: flex;
     justify-content: center;
     align-items: center;
